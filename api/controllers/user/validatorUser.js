@@ -1,8 +1,10 @@
 const { body, validationResult, param } = require("express-validator");
 const user = require("../../models/user");
-const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.createuser = [
+  body("login")
+    .isLength({ min: 5 })
+    .withMessage("Login must be greater thant 5 characters"),
   body("login").custom(async (login) => {
     const valdateUser = await user.findOne({ login: login });
 

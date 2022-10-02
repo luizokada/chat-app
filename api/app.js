@@ -2,6 +2,8 @@ const express = require("express");
 const socketio = require("socket.io");
 const routes = require("./routes/index");
 const db = require("./db");
+const { blockList } = require("./redis/blockList");
+const { allowList } = require("./redis/allowList");
 require("dotenv").config();
 
 db.once("open", () => {
@@ -9,7 +11,7 @@ db.once("open", () => {
 });
 
 const app = express();
-
+const connecBlock = blockList;
 app.use(express.static(__dirname + "/public"));
 
 const server = app.listen(5000, () => {
