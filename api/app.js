@@ -11,7 +11,6 @@ db.once("open", () => {
 });
 
 const app = express();
-const connecBlock = blockList;
 app.use(express.static(__dirname + "/public"));
 
 const server = app.listen(5000, () => {
