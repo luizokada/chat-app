@@ -11,6 +11,7 @@ const {
   login,
   authorization,
   logout,
+  checkLogin,
 } = require("../controllers/auth/authCtrl");
 const userValidator = require("../controllers/user/validatorUser");
 const authValidator = require("../controllers/auth/validatorAuth");
@@ -40,6 +41,7 @@ userRoute.delete(
   userValidator.deleteUser,
   deleteUser
 );
+userRoute.get("/check", authValidator.auth, checkLogin);
 userRoute.post("/login", authValidator.login, login);
 userRoute.post("/logout", authValidator.login, logout);
 

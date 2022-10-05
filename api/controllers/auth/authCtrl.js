@@ -71,6 +71,28 @@ const authorization = async (req, res, next) => {
   });
 };
 
+const checkLogin = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  let user_id;
+  JWT.verify(token, process.env.SECRET, function (err, decoded) {
+    if (err) return res.status(401).json({ sucess: false, message: err });
+    user_id = decoded.user;
+  });
+  if (await isInBlockList(token)) {
+    return res
+      .status(401)
+      .json({ sucess: false, message: "Token Invalid Blocklist" });
+  }
+  user.findOne({ _id: user_id }, (err, user) => {
+    if (!user) {
+      return res
+        .status(401)
+        .json({ sucess: false, message: "No user With this token" });
+    }
+    return res.status(200).json({ sucess: true });
+  });
+};
+
 const logout = async (req, res) => {
   const token = req.headers["x-access-token"];
   const expirationDate = JWT.decode(token).exp;
@@ -80,4 +102,4 @@ const logout = async (req, res) => {
   return res.status(200).json({ sucess: true, message: "Logout succeed" });
 };
 
-module.exports = { login, authorization, logout };
+module.exports = { login, authorization, logout, checkLogin };

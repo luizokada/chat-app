@@ -1,5 +1,6 @@
 const express = require("express");
 const socketio = require("socket.io");
+const cors = require("cors");
 const routes = require("./routes/index");
 const db = require("./db");
 const { blockList } = require("./redis/blockList");
@@ -11,6 +12,7 @@ db.once("open", () => {
 });
 
 const app = express();
+app.use(cors());
 app.use(express.static(__dirname + "/public"));
 
 const server = app.listen(5000, () => {
