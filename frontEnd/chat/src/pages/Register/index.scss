@@ -3,7 +3,7 @@ $border-dark: rgba($base-color, 0.88);
 $big-padding: 10rem;
 $big-gap: 3rem;
 
-.container {
+.container__register {
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 100vh;
@@ -18,4 +18,9 @@ $big-gap: 3rem;
   flex-direction: column;
   gap: $big-gap;
   padding: $big-padding;
+}
+a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }

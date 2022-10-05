@@ -2,16 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Register from "./pages/Register";
-import Login from "./pages/Login/login";
+import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Chat from "./pages/Chat";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Chat />,
+  },
+  {
+    path: "/login",
     element: <Login />,
-    errorElement: <p>PAGINA NAO EXISTE</p>,
   },
   {
     path: "/register",
