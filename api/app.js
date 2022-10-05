@@ -17,11 +17,3 @@ const server = app.listen(5000, () => {
   console.log("Listening in port 5000");
 });
 routes(app);
-const io = socketio(server);
-
-io.on("connection", (socket) => {
-  socket.emit("messageFromServer", { data: "Welcome " });
-  socket.on("messageToServer", (msg) => {
-    console.log(msg);
-  });
-});

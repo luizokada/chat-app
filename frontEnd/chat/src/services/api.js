@@ -1,9 +1,7 @@
 import axios from "axios";
-import socket, { Socket } from "socket.io";
 
-const URL_API = "http://localhost:5000";
-exports.api = axios.create({
-  baseURL: URL_API,
+const api = axios.create({
+  baseURL: "http://localhost:5000",
 });
 
-exports.socket = Socket(URL_API);
+export default api;

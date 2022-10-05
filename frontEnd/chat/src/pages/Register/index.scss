@@ -1,9 +1,21 @@
 $base-color: #c6538c;
 $border-dark: rgba($base-color, 0.88);
-$big-padding: 24px;
+$big-padding: 10rem;
+$big-gap: 3rem;
 
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+  .container__image {
+    background-image: url("https://preview.redd.it/y1udzivcql471.png?width=640&crop=smart&auto=webp&s=bd5d01bfcf84b8a1af55f89ed241ae99c9e91711");
+    background-repeat: initial;
+    background-position: center;
+  }
+}
 .form {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  gap: $big-gap;
   padding: $big-padding;
 }
